@@ -3,6 +3,8 @@ const router=express.Router();
 const Tiffin=require('./../model/tiffin.model')
 //importing models
 
+const authenticateMiddleware=require('./middlewares/auth.middleware')
+
 //routes
 
 router.get('/',async (req,res)=>{
@@ -17,7 +19,7 @@ router.get('/',async (req,res)=>{
     }
 })
 
-router.post('/', async (req,res)=>{
+router.post('/',authenticateMiddleware, async (req,res)=>{
     try
     {
         let tiffin=new Tiffin(req.body)
@@ -39,7 +41,6 @@ router.post('/', async (req,res)=>{
     }
 
 })
-
 
 
 module.exports=router
