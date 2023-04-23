@@ -36,10 +36,11 @@ mongoose.connect(`${process.env.DATABASE_URL}`,(e)=>{
 
 //importing routes
 const authRouter=require('./routes/auth.route')
-
+const tiffinRouter=require('./routes/tiffin.route')
 
 //setting routes
 app.use('/auth',authRouter);
+app.use('/tiffin',tiffinRouter)
 
 
 //listening
